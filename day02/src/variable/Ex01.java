@@ -11,6 +11,7 @@ package variable;
 
 public class Ex01 {
 	public static void main(String[] args) {
+		
 		System.out.println("5");	// 쌍따옴표 -> 문자열
 		System.out.println('5');	// 홑따옴표 -> 문자
 		System.out.println(5);		// 정수
