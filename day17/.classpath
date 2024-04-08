@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="E:/12월 전자정부기반 e커머스 융합 sw개발자 국창용/2_객체지향 프로그래밍/수업자료/라이브러리/jackson-databind-2.14.2.jar"/>
+	<classpathentry kind="lib" path="E:/12월 전자정부기반 e커머스 융합 sw개발자 국창용/2_객체지향 프로그래밍/수업자료/라이브러리/jackson-core-2.14.2.jar"/>
+	<classpathentry kind="lib" path="E:/12월 전자정부기반 e커머스 융합 sw개발자 국창용/2_객체지향 프로그래밍/수업자료/라이브러리/jackson-annotations-2.14.2.jar"/>
+	<classpathentry kind="lib" path="E:/12월 전자정부기반 e커머스 융합 sw개발자 국창용/2_객체지향 프로그래밍/수업자료/라이브러리/json-20160810.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
