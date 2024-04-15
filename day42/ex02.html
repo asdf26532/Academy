@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex02.html</title>
+
+    <style>
+        .container > div {
+            width: 50px;
+            height: 50px;
+            margin: 10px 0;
+            background-color: yellowgreen;
+        }
+        input:checked + .container > div {
+            transition: all 3s;
+        }
+        input:checked + .container > .move {
+            transform: translate(100px);
+        }
+        input:checked + .container > .size {
+            transform: scale(0.5, 0.5);
+        }
+        input:checked + .container > .rotate {
+            transform: rotate(360deg);
+        }
+        input:checked + .container > .twist {
+            transform: skew(40deg, 20deg);
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Transition</h1>
+    <hr>
+
+    <ul>
+        <li>애니메이션을 자연스럽게 실행하는 속성</li>
+        <li>특정 이벤트가 있어야만 적용된다</li>
+    </ul>
+
+    <input type="checkbox">클릭시 실행
+
+    <div class="container">
+        <div class="move">이동</div>
+        <div class="size">확대</div>
+        <div class="rotate">회전</div>
+        <div class="twist">왜곡</div>
+    </div>
+</body>
+</html>
