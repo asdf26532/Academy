@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex02.html</title>
+
+    <style>
+        * { /* 1. 전체 선택자 */
+            color: crimson;
+        }
+
+        p { /* 2. 태그 선택자 */ 
+            color: coral;
+        }
+
+        .group {    /* 3. 클래스 선택자 */
+            color: navy;
+        }
+
+        #unique {   /* 4. id 선택자 */
+            color: hotpink;
+        }
+
+        /* id 선택자 주의 사항 : 꼭 하나의 태그에만 적용하자 */
+
+    </style>
+</head>
+<body>
+    
+    <h1>CSS 선택자</h1>
+    <hr>
+
+    <h4 class="group">선택자는 어떠한 태그를 선택할지 지정하는 것</h4>
+
+    <p>Hello CSS</p>
+    <p class="group">Welcom to HTML</p>
+    <p class="group" id="unique">HTML is not promgramming language</p>
+    <p style="color: blueviolet">Why?</p>
+
+</body>
+</html>
