@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz3.html</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            animation: rotate 1s linear infinite;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate3d(0, 1, 0, 360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz3</h1>
+    <hr>
+
+    <h4>테이블 형태로 입력한 구구단을 모두 출력</h4>
+
+    <table></table>
+
+    <script>
+        let dan = 2;
+        let msg = 
+            "<tr>" +
+                "<th>구구단</th>" +
+                "<th>결과</th>"
+            "</td>";
+
+        for (let i = 1; i <= 9; i++) {
+            // console.log(`${dan} x ${i} = ${dan * i}`);
+            msg += `<tr><td>${dan} x ${i}</td><td>${dan * i}</td></tr>`;
+        }
+
+        document.getElementsByTagName('table')[0].innerHTML = msg;
+    </script>
+
+    
+</body>
+</html>

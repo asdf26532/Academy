@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz2.html</title>
+</head>
+<body>
+    <h1>Quiz2</h1>
+    <hr>
+
+    <h4>국 영 수 합계/평균을 출력 후 등급 컷 출력</h4>
+    <p>평균의 소수점은 2자리까지 제한</p>
+
+    <ol>
+        <li>100 ~ 90 : A</li>
+        <li>89 ~ 80 : B</li>
+        <li>79 ~ 70 : C</li>
+        <li>69 ~ 60 : D</li>
+        <li>59 ~ 0 : F</li>
+    </ol>
+
+    <ul></ul>
+
+    <script>
+        let kor = 70, eng = 80, mat = 98;
+        let sum = kor + eng + mat;
+        let avg = sum / 3;
+
+        avg = Math.round(avg * 100) / 100;
+
+        let rank = 'F';
+
+        if (avg >= 90)      rank = 'A';
+        else if (avg >= 80) rank = 'B';  
+        else if (avg >= 70) rank = 'C';  
+        else if (avg >= 60) rank = 'D';  
+
+        let msg = 
+            `<li>국 ${kor}, 영 ${eng}, 수 ${mat}</li>` + 
+            `<li>합계 ${sum} (= ${avg})</li>` + 
+            `<li>${rank}등급</li>`;
+
+        document.getElementsByTagName('ul')[0].innerHTML = msg;
+    </script>
+</body>
+</html>

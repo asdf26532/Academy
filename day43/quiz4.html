@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz4.html</title>
+
+    <style>
+        section > div {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>구구단 표</h1>
+    <hr>
+
+    <section></section>
+
+    <script>
+        let msg = '';
+
+        for (let i = 2; i <= 9; i++) {
+            msg += '<div>';
+            msg += `<h3>${i}단</h3>`;
+
+            for (let j = 1; j <= 9; j++) {
+                msg += `${i} x ${j} = ${i * j}<br>`;
+            }
+            msg += '</div>';
+        }
+
+        document.getElementsByTagName('section')[0].innerHTML = msg;
+    </script>
+
+</body>
+</html>

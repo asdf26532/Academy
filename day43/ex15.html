@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex15.html</title>
+
+    <style>
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS 함수 종류</h1>
+    <hr>
+
+    <ol>
+        <li>일반 함수 : 코드 저장 후 재사용 가능한 함수</li>
+        <li>즉시 실행 함수 : 코드를 저장하지 않고 바로 실행하는 함수</li>
+        <li>익명 함수 : 이름이 없는 함수. 주로 아래 콜백 함수에 전달된다</li>
+        <li>콜백 함수 : 다른 함수의 전달인자로 사용되는 함수</li>
+    </ol>
+
+    <script>
+        // 1. 일반 함수
+        function nomal(n) {     // 코드를 저장 후
+            return `일반 함수 입니다. n = ${n}`;
+        }
+
+        console.log(nomal(6));  // 호출해서 사용
+
+
+        // 2. 즉시 실행 함수
+        (function(n) {         // n은 매개변수
+            console.log(`즉시 실행 함수 입니다. 주로 이벤트에 걸어써요. n = ${n}`);
+        
+        }) (20);                // 20은 전달인자
+
+
+        // 3. 익명 함수
+        // ※ 아래 anonymous는 변수로 함수의 위치를 기억하는 변수 (즉, 함수명이 아님)
+        let anonymous = function(n) {
+            return `익명 함수 입니다. 주로 콜백에 활용되요. n = ${n}`;
+        }
+
+        // console.log(anonymous(10));
+
+        // 4. 콜백 함수
+        function call(n) {
+            return `콜백 함수 입니다. ${n(3)}`;
+        }
+
+        console.log(call(anonymous));
+
+    </script>
+    
+</body>
+</html>
