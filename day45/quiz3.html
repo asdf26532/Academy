@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz3.html</title>
+
+    <style>
+        input {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz3</h1>
+    <hr>
+
+    <h3>input의 값 가져오기 및 검증</h3>
+
+    <div>
+        <input placeholder="아이디">
+        <input type="password" placeholder="패스워드">
+        <input type="password" placeholder="패스워드 확인">
+        <input type="email" placeholder="이메일">
+
+        <button>가입</button>
+    </div>
+
+    <hr>
+
+    <h4></h4>
+    
+    <script>
+        let div = document.getElementsByTagName('div')[0];
+        let child = div.children;
+
+        child[2].addEventListener('blur', (e) => {
+            let msg = '패스워드가 일치함';
+            
+            if (child[1].value != child[2].value) {
+                msg = '패스워드가 일치하지 않습니다';
+
+                child[1].value = '';
+                child[2].value = '';
+
+                child[1].focus();
+            }
+
+            document.getElementsByTagName('h4')[0].innerHTML = msg;
+        });
+    </script>
+
+</body>
+</html>
