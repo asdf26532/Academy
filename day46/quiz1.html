@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz1.html</title>
+</head>
+<body>
+    <h1>목록</h1>
+    <hr>
+
+    <h3>할일 (To Do)</h3>
+
+    <div class="input">
+        <input type="text">
+        <button>등록</button>
+    </div>
+
+    <ul></ul>
+
+    <script>
+        let div = document.querySelector('.input');
+        let child = div.children;
+
+        child[1].addEventListener('click', (e) => {
+            let ul = document.querySelector('ul');
+            let newLi = document.createElement('li');
+
+            newLi.innerHTML = child[0].value;
+            ul.appendChild(newLi);
+        });
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz3.html</title>
+
+    <style>
+        fieldset > input {
+            display: block;
+            margin: 20px 0;
+        }
+        input[type="checkbox"] {
+            display: inline;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>메뉴 옮기기</h1>
+    <hr>
+
+    <fieldset>
+        <legend>사용자 정보</legend>
+
+        <input type="text" placeholder="이름">
+        <input type="text" placeholder="연락처">
+        <input type="text" placeholder="주소">
+    </fieldset>
+    
+    <fieldset>
+        <legend>주문 정보</legend>
+
+        <input type="checkbox">사용자 정보와 동일
+        <input type="text" placeholder="이름">
+        <input type="text" placeholder="연락처">
+        <input type="text" placeholder="주소">
+    </fieldset>
+
+    <script>
+        let fieldset = document.querySelectorAll('fieldset');
+        let userInfo = fieldset[0];
+        let orderInfo = fieldset[1];
+
+        orderInfo.children[1].addEventListener('change', (e) => {
+            for (let i = 1; i < userInfo.children.length; i++) {
+                orderInfo.children[i + 1].value = userInfo.children[i].value;
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex04.html</title>
+
+    <style>
+        h4 {    /* rules 0 */
+            color: red;
+        }
+
+        p {     /* rules 1 */
+            font-family: '궁서체';
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS 조작</h1>
+    <hr>
+
+    <div class="target">
+        <h4>Hello JavaScript</h4>
+
+        <p>Hello CSS</p>
+    </div>
+
+    <button>CSS 변경</button>
+
+
+    <script>
+        document.querySelector('button').onclick = (e) => {
+            let div = document.querySelector('.target');
+            let child = div.children;
+
+            let css = document.styleSheets[0].cssRules;
+
+            css[0].style.color = 'blue';
+            css[1].style.fontFamily = 'Comic Sans MS';
+        };
+    </script>
+    
+</body>
+</html>
