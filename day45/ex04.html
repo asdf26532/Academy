@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex04.html</title>
+</head>
+<body>
+    <h1>요소 속성 조작</h1>
+    <hr>
+
+    <img src="img/dora.png">
+
+    <p>
+        <button>변경</button>
+        <button>되돌리기</button>
+    </p>
+
+    <script>
+        let img = document.querySelector('img');
+        let btns = document.querySelectorAll('button');
+        
+        btns[0].addEventListener('click', (e) => {
+            img.src = 'img/banner.png';
+        });
+
+        btns[1].addEventListener('click', (e) => {
+            img.src = 'img/dora.png';
+        });
+    </script>
+
+</body>
+</html>

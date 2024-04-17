@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz1.html</title>
+</head>
+<body>
+    <h1>Quiz1</h1>
+    <hr>
+
+    <input name="num" type="number">
+    <button onclick="func()">입력</button>
+
+    <hr>
+
+    <h3>결과 : 1 ~ n까지의 약수 출력</h3>
+    <p></p>
+
+
+    <h3>결과 : 소수 판별</h3>
+    <p></p>
+
+    <script>
+        function func() {
+            let input = document.getElementsByName('num')[0];
+            let num = input.value;
+            let result = '';
+            let count = 0;
+
+            let ps = document.querySelectorAll('p');
+
+            // 약수
+            for (let i = 1; i <= num; i++) {
+                if (num % i == 0) {
+                    result += i + ' ';
+                    count++;
+                }
+            }
+
+            let prime = '소수 아님';
+
+            if (count == 2) {
+                prime = '소수';
+            }
+
+            ps[0].innerHTML = result;
+            ps[1].innerHTML = prime;
+
+        }
+
+    </script>
+
+</body>
+</html>

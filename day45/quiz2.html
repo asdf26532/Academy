@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz2.html</title>
+</head>
+<body>
+    <h1>Quiz2</h1>
+    <hr>
+
+    <h3>아래 입력한 정보를 화면에 출력</h3>
+
+    <p><input name="name" placeholder="이름"></p>
+    <p><input name="kor" type="number" placeholder="국어"></p>
+    <p><input name="eng" type="number" placeholder="영어"></p>
+    <p><input name="mat" type="number" placeholder="수학"></p>
+    
+    <button>전송</button>
+
+    <hr>
+
+    <h3>결과</h3>
+
+    <ul></ul>
+
+    <script>
+        let btn = document.getElementsByTagName('button')[0];
+
+        btn.addEventListener('click', (e) => {
+            let inputs = document.getElementsByTagName('input');
+
+            let name = inputs[0].value;
+            let kor = Number(inputs[1].value);
+            let eng = Number(inputs[2].value);
+            let mat = Number(inputs[3].value);
+
+            let sum = kor + eng + mat;
+            let avg = sum / 3;
+
+            let msg =
+                `<li>이름 : ${name}</li>` + 
+                `<li>국어 : ${kor}</li>` + 
+                `<li>영어 : ${eng}</li>` + 
+                `<li>수학 : ${mat}</li>` + 
+                `<li>합계 : ${sum}</li>` + 
+                `<li>평균 : ${avg}</li>`;
+
+            document.getElementsByTagName('ul')[0].innerHTML = msg;
+        });
+    </script>
+</body>
+</html>
