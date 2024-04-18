@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz1.html</title>
+
+    <style>
+        table { border-collapse: collapse; }
+        th, td {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>휴게소별 날씨 API</h1>
+    <hr>
+
+    <ol>
+        <li><a href="https://data.ex.co.kr/openapi/basicinfo/openApiInfoM?apiId=0508">사이트</a></li>
+        <li>위의 사이트에서 제공하는 API를 활용해서 휴게소별 날씨 정보를 받아온다</li>
+        <li>그 중 휴게소 이름과 현재 기온값 이 2가지를 가져온다</li>
+        <li>일단 그래프 이전에 table 태그로 정보를 모두 출력해본다</li>
+        <li>테이블에 출력을 다 했으면 그래프로 화면에 출력. 종류는 아무거나</li>
+    </ol>
+
+    <details>
+        <summary>테이블</summary>
+        <table>
+            <thead>
+                <tr>
+                    <th>휴게소명</th>
+                    <th>현재기온</th>
+                    <th>날씨</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </details>
+
+    <details>
+        <summary>그래프</summary>
+
+        <canvas id="myChart"></canvas>
+    </details>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        let url = 'https://data.ex.co.kr/openapi/restinfo/restWeatherList?key=test&type=json&sdate=20240303&stdHour=14';
+        let datas;
+
+        fetch(url, {method: 'get'})
+        .then(response => response.json())
+        .then(data => {
+            datas = data.list;
+            let msg = '';
+
+            for (let i = 0; i < datas.length; i++) {
+                // console.log(datas[i].unitName + " : " + datas[i].tempValue);
+
+                msg += 
+                    `<tr>` +
+                        `<td>${datas[i].unitName}</td>` + 
+                        `<td>${Math.round(datas[i].tempValue * 10) / 10}</td>` + 
+                        `<td>${datas[i].weatherContents}</td>` + 
+                    `</tr>`;
+            }
+
+            document.querySelector('tbody').innerHTML = msg;
+
+
+            // 그래프
+            const ctx = document.getElementById('myChart');
+
+            let x = [];
+            let y = [];
+
+            for (let i = 0; i < datas.length; i++) {
+                x.push(datas[i].unitName);
+                y.push(datas[i].tempValue);
+            }
+
+            new Chart(ctx, {
+                type: 'line',            // 그래프 유형
+                data: {                 // 그래프에 표현할 데이터
+                    labels: x,     // 데이터 이름(x축 정보)
+                    datasets: [{
+                        label: '휴게소별 날씨',
+                        data: y,
+                        borderWidth: 1
+                    }]
+                },
+                options: {              // 그래프 세부 옵션
+                    scales: {           // - 모든 옵션을 외우기 보단 그때 그때 찾아쓴다
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
