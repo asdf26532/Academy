@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05.html</title>
+</head>
+<body>
+    <h1>REST</h1>
+    <hr>
+
+    <ul>
+        <li>Representaional State Transfer</li>
+        <li>자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것</li>
+        <li>HTTP Method인 GET, POST, PUT, DELETE 등을 활용해 주고 받는다</li>
+        <li>REST API는 이러한 REST 방식으로 제 3자가 서버의 데이터를 활용할 수 있게 만든 Interface이다</li>
+    </ul>
+
+    <h4>※ 코드가 아닌 직접 REST를 테스트 하려면 POSTMAN이라는 프로그램을 사용</h4>
+
+    <script>
+        // 1. 요청할 주소를 설정
+        let url = 'https://data.ex.co.kr/openapi/restinfo/restWeatherList?key=test&type=json&sdate=20240227&stdHour=14';
+
+
+        // 2. AJAX 요청 메서드 fetch()
+        // - AJAX : 비동기 통신. 화면을 일부만 요청 및 갱신하는 방법
+        
+        let result = fetch(url, {
+            method: 'get',
+        });
+
+        console.log(result);
+        // - 반환 후 result의 타입을 보면 Promise라는 객체로 반환 받음
+        // - 비동기 처리시 사용되는 JS 특수 객체. 비동기 처리 순서를 올바르게 처리하기 위해 고안
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz1_pop.html</title>
+
+    <style>
+        fieldset {
+            display: inline;
+        }
+        input {
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <hr>
+
+    <fieldset>
+        <legend>정보 입력</legend>
+
+        <input type="text" placeholder="이름">
+        <input type="number" placeholder="나이">
+
+        <button>전송</button>
+    </fieldset>
+    
+    <script>
+        document.querySelector('button').onclick = (e) => {
+            let inputs = document.querySelector('fieldset').children;
+            let name = inputs[1].value;
+            let age = Number(inputs[2].value);
+
+            opener.getPopData(name, age);
+            close();
+        }
+    </script>
+
+</body>
+</html>
