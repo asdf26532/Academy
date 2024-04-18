@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input.html</title>
+
+    <style>
+        fieldset { display: inline; }
+        input { display: block; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>POST 실습</h1>
+    <hr>
+
+    <fieldset>
+        <legend>회원가입</legend>
+
+        <input type="text" placeholder="아이디">
+        <input type="password" placeholder="패스워드">
+        <input type="text" placeholder="닉네임">
+        <input type="email" placeholder="이메일">
+
+        <button>가입</button>
+    </fieldset>
+
+    <script>
+        let child = document.querySelector('fieldset').children;
+
+        child[5].onclick = (e) => {
+            let url = 'http://127.0.0.1:8000/';
+
+            // 1. 전체 계정 정보를 GET으로 받아온다
+            fetch(url, { method: 'get'})
+            .then(response => response.json())
+            .then(data => {
+                // 2. 목록을 받으면 반복을 통해서 ID가 이미 있는지 검사
+                for (let i = 0; i < data.length; i++) {
+                    if (child[1].value == data[i].userid) {
+                        alert('이미 있는 계정 입니다!!!');
+                        return;
+                    }
+                }
+
+
+                // 3. 중복이 없으면 가입 수행
+                url += 'add/';
+
+                let newUser = {
+                    "userid": child[1].value,
+                    "userpw": child[2].value,
+                    "nick": child[3].value,
+                    "email": child[4].value
+                };
+
+                fetch(url, {
+                    method: "post",
+                    header: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newUser)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.msg);
+                    close();
+                });
+
+            });
+            
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home.html</title>
+
+    <style>
+        table { border-collapse: collapse; }
+        th, td {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Django REST Server 실습</h1>
+    <hr>
+
+    <h4>Django Server를 오픈 후 실습할것</h4>
+
+    <table>
+        <thead>
+            <th>회원번호</th>
+            <th>아이디</th>
+            <th>패스워드</th>
+            <th>닉네임</th>
+            <th>이메일</th>
+            <th>가입일</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <p>
+        <button>입력</button>
+        <button>수정</button>
+        <button>삭제</button>
+    </p>
+    
+    <script>
+        // 1. 전체 목록 (Select All, HTTP GET)
+        let url = 'http://127.0.0.1:8000';
+
+        fetch(url, { method: 'get'})
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            let msg = '';
+
+            for(let i = 0; i < data.length; i++) {
+                msg += 
+                    `<tr>` + 
+                        `<td>${data[i].id}</td>` +
+                        `<td>${data[i].userid}</td>` +
+                        `<td>${data[i].userpw}</td>` +
+                        `<td>${data[i].nick}</td>` +
+                        `<td>${data[i].email}</td>` +
+                        `<td>${data[i].jdate}</td>` +
+                    `</tr>`;
+            }
+
+            document.querySelector('tbody').innerHTML = msg;
+        })
+
+
+        let btns = document.querySelector('p').children;
+
+        // 2. 입력 (Insert, HTTP POST)
+        btns[0].onclick = (e) => {
+            let pop = open(
+                    'popUp/input.html',
+                    '_blank',
+                    'left=100, top=100, width=400, height=500');
+        };
+
+        // 3. 삭제 (Delete, HTTP DELETE)
+        btns[2].onclick = (e) => {
+            let id = Number(prompt('삭제할 계정 번호'));
+            url += `/delete/${id}/`;
+
+            fetch(url, { method: 'delete'})
+            .then(response => response.json())
+            .then(data => {
+                alert(data.msg);
+            });
+        }
+    
+        // 4. 수정 (Update, HTTP PUT, HTTP PATCH)
+        // - PUT    : 전체 필드 수정시 유리
+        // - PATCH  : 부분 필드 수정시 유리
+        btns[1].onclick = (e) => {
+
+            // ※ Django 서버에 PUT이 userpw 변경만 적용되어 있다
+
+            let id = Number(prompt('변경할 계정 번호'));
+            let newPw = prompt('새 패스워드');
+
+            let change = {
+                "userpw": newPw
+            };
+
+            url += `/put/${id}/`;
+
+            fetch(url, {
+                method: "put",
+                header: { "Content-Type": "application/json" },
+                body: JSON.stringify(change)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.msg);
+            });
+        }
+    </script>
+
+</body>
+</html>
