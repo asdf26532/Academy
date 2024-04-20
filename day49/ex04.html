@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex02.html</title>
+</head>
+<body>
+    <h1>그래프 종류</h1>
+    <hr>
+
+    <h4>레이더(radar) 그래프</h4>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        const ctx = document.getElementById('myChart');
+        
+        let labels = ['java', 'C/C++', 'C#', 'javaScript', 'python', 'php'];
+        let data1 = [12, 19, 13, 15, 12, 13];
+        let data2 = [9, 10, 15, 8, 17, 5];
+
+        new Chart(ctx, {
+            type: 'radar',           // 그래프 유형
+            data: {                 // 그래프에 표현할 데이터
+                labels: labels,     // 데이터 이름(x축 정보)
+                datasets: [
+                    {
+                        label: '언어 투표',
+                        data: data1
+                    },
+                    {
+                        label: '호불호',
+                        data: data2
+                    }
+                ]
+            },
+            options: {              // 그래프 세부 옵션
+                scales: {           // - 모든 옵션을 외우기 보단 그때 그때 찾아쓴다
+                    r: {
+                        min: 0,
+                        max: 20
+                    },
+                }
+            }
+        });
+    </script>
+
+    
+</body>
+</html>
