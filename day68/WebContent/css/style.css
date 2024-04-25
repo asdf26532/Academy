@@ -1,0 +1,59 @@
+@charset "UTF-8";
+body {
+	width: 1200px;
+	margin: 0 auto;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.menu {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+}
+.menu li {
+	margin: 0 10px;
+}
+.home {
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+}
+.side {
+	width: 20%;
+}
+.side > fieldset {
+	border-radius: 45px;
+}
+article {
+	width: 78%;
+}
+.board {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+.board th, .board td {
+	border-bottom: 1px solid grey;
+	padding: 5px 10px;
+}
+.board td:nth-child(2) {
+	width: 60%;
+	text-align: left;
+}
+#account td {
+	width: 20%;
+}
+
+
+
