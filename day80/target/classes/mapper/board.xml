@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itbank.model.BoardDAO">
+
+	<select id="selectAll" 
+			parameterType="map"
+			resultType="com.itbank.model.vo.BoardVO">
+			
+		select * from board_view
+			<if test="type != null">
+			where ${type} like '%${search}%'
+			</if>
+			order by idx desc
+			offset 0 rows
+			fetch first 10 rows only
+	</select>
+	
+	<!-- 
+		1. #{}
+		- 지정 데이터의 자료형을 파악해 sql문에 채워 실행한다
+		- 아래는 예시
+		where #{type} like '%#{search}%' -> where 'nick' like '%'검색어'%'
+		
+		
+		2. ${}
+		- 전달한 데이터를 가공 없이 그냥 그대로 sql문에 채워 실행한다
+		- 아래는 예시
+		where ${type} like '%${search}%' -> where nick like '%검색어%'
+		
+		
+		Sping mybatis는 제어문을 제공하여 동적으로 SQL문을 바꿔 실행 가능
+		이를 동적 SQL이라고 한다
+	 -->
+	
+	<insert id="insert"
+			parameterType="com.itbank.model.vo.BoardVO">
+			
+		insert into
+			board(title, user_idx, contents)
+			values(#{title}, #{user_idx}, #{contents})
+	</insert>
+	
+	<update id="update"
+			parameterType="com.itbank.model.vo.BoardVO">
+	
+		update board
+			set
+				title = #{title},
+				contents = #{contents}
+			where idx = #{idx}
+	</update>
+	
+</mapper>
