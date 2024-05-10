@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itbank.model.AccountDAO">
+
+	<select id="selectOne"
+			parameterType="com.itbank.vo.AccountVO"
+			resultType="com.itbank.vo.AccountVO">
+		
+		select * from account
+			where userid = #{userid}
+			and userpw = #{userpw}
+	</select>
+	
+	<insert id="insert"
+			parameterType="com.itbank.vo.AccountVO">
+	
+		insert into 
+			account(userid, userpw, nick, email)
+			values(#{userid}, #{userpw}, #{nick}, #{email})
+	</insert>
+	
+	<select id="selectIdx"
+			resultType="int">
+	
+		select idx from account
+		    order by idx desc
+		    offset 0 rows
+		    fetch first 1 rows only
+	</select>
+
+	<update id="update"
+			parameterType="com.itbank.vo.AccountVO">
+			
+		update account
+			set
+				profile = #{profile},
+				userpw = #{userpw}
+			where idx = #{idx}
+	</update>
+</mapper>
