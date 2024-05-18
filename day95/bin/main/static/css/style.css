@@ -1,0 +1,38 @@
+@charset "UTF-8";
+a {
+	color: inherit;
+}
+table {
+	border-collapse: collapse;
+}
+th, td {
+	border: 1px solid black;
+	padding: 5px 10px;
+}
+.menu {
+	list-style: none;
+	padding: 0;
+	display: flex;
+}
+.menu > li {
+	margin: 0 10px;
+}
+table input, table textarea {
+	box-sizing: border-box;
+	width: 600px;
+	border: 0;
+	outline: none;
+	font-size: 17px;
+	font-family: consolas;
+}
+table textarea {
+	min-height: 300px;
+	resize: none;
+}
+.search {
+	margin-bottom: 10px; 
+	display: flex;
+}
+.search > *:nth-child(n + 2) {
+	margin-left: -1px;
+}
