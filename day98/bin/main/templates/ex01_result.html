@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ex01_result</title>
+</head>
+<body>
+	<header th:replace="~{piece :: header}"></header>
+
+	<h4>ex01 결과</h4>
+
+	<p th:text="${param.name}"></p>
+	<p th:text="${param.age}"></p>
+	<p th:text="${msg}"></p>
+
+	<footer th:replace="~{piece :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+</head>
+<body>
+	<h1>Account 테이블</h1>
+	
+	<a href="/account/login">로그인</a>
+	
+	<hr>
+	
+	<p th:if="${session.user != null}" th:text="${session.user.nick}"></p>
+	
+	<table>
+		<tr>
+			<th>계정번호</th>
+			<th>아이디</th>
+			<th>닉네임</th>
+			<th>이메일</th>
+			<th>가입일</th>
+		</tr>
+		
+		<tr th:each="row : ${list}">
+			<td th:text="${row.idx}"></td>
+			<td th:text="${row.userid}"></td>
+			<td th:text="${row.nick}"></td>
+			<td th:text="${row.email}"></td>
+			<td th:text="${row.j_date}"></td>
+		</tr>
+	</table>
+
+</body>
+</html>
